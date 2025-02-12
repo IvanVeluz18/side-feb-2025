@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8c8dc;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .container {
+            max-width: 90%;
+            width: 400px;
+        }
+        .image-placeholder {
+            width: auto;
+            height: 100%;
+            max-height: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            
+        }
+        p {
+            font-size: 18px;
+            font-weight: 200;
+            margin-bottom: 20px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+        .no-btn:hover {
+            background-color: #c82333;
+        }
+        @media (max-width: 500px) {
+            .btn {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="cat-please.gif" alt="catto" class="image-placeholder">
+        <h1>Will you be my Valentine?</h1>
+        <p>No need to overthink it—some things are just meant to be.</p>
+        <div class="btn-container">
+            <a href="about.html" class="btn">Yes</a>
+            <button class="btn no-btn" id="noButton">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        let moveCount = 0;
+        const movementPatterns = [
+            { x: 100, y: 0 },
+            { x: -180, y: 0 },
+            { x: 0, y: 50 },
+            { x: 0, y: -50 },
+            { x: 110, y: 70 },
+            { x: -150, y: -50 },
+            { x: 120, y: -120 },
+            { x: -150, y: 140 },
+            { x: 130, y: 120 },
+            { x: -160, y: -220 }
+        ];
+        
+        function moveButton() {
+            const pattern = movementPatterns[moveCount % movementPatterns.length];
+            noButton.style.transform = `translate(${pattern.x}px, ${pattern.y}px)`;
+            moveCount++;
+        }
+        
+        noButton.addEventListener('mouseover', moveButton);
+        noButton.addEventListener('touchstart', moveButton);
+    </script>
+</body>
+</html>
